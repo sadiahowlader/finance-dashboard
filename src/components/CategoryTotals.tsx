@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useTx } from "../context/TransactionsContext";
 import { startOfMonth, endOfMonth, eachDayOfInterval, format } from "date-fns";
 

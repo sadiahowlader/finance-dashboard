@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import { useTx } from "../context/TransactionsContext";
 
 function toCSV(rows: Record<string, any>[]) {

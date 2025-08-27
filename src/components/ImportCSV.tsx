@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useTx } from "../context/TransactionsContext";
 
 // Small CSV parser that supports quoted fields and ""-escaped quotes.
