@@ -1,68 +1,90 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* --- Base theme (light & dark) ------------------------------------------ */
+:root{
+  --bg: #0b0b0c;
+  --surface: #141416;
+  --border: #232326;
+  --text: #e9e9ee;
+  --muted: #a0a0aa;
+  --accent: #7c5cff;
+  --accent-2: #22c55e;
+  --danger: #ef4444;
+  --ring: 0 0 0 3px rgba(124,92,255,.25);
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+@media (prefers-color-scheme: light){
+  :root{
+    --bg:#f8fafc; --surface:#ffffff; --border:#e5e7eb; --text:#0b1220; --muted:#6b7280;
+    --shadow: 0 8px 20px rgba(2,6,23,.08);
+  }
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
+*{ box-sizing:border-box }
+html,body,#root{ height:100% }
+body{ margin:0; background:var(--bg); color:var(--text); font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial; line-height:1.45; }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* --- Layout -------------------------------------------------------------- */
+main{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
 }
+header h1{ margin:0 0 4px }
+.muted{ color: var(--muted) }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+/* --- Cards --------------------------------------------------------------- */
+section, form{
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+section + section{ margin-top: 16px }
+
+/* --- Inputs -------------------------------------------------------------- */
+input, select, button{
+  font: inherit;
+  color: inherit;
+}
+input, select{
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: transparent;
+  outline: none;
+}
+input:focus, select:focus{ box-shadow: var(--ring); border-color: var(--accent) }
+
+/* --- Buttons ------------------------------------------------------------- */
+button{
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.04));
   cursor: pointer;
-  transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+button:hover{ transform: translateY(-1px) }
+button:active{ transform: translateY(0) }
+
+button.primary{ border-color: color-mix(in oklab, var(--accent) 60%, var(--border)); }
+button.danger{ border-color: color-mix(in oklab, var(--danger) 60%, var(--border)); }
+
+/* --- Lists / table ------------------------------------------------------- */
+ul.list{ list-style:none; padding:0; margin:0; display:grid; gap:10px }
+.row{ display:flex; gap:10px; align-items:center }
+.totals{ display:flex; gap:16px; flex-wrap:wrap; margin-bottom:10px }
+.badge{
+  display:inline-block; padding:4px 8px; border:1px solid var(--border); border-radius:999px; font-size:12px; color:var(--muted)
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+/* --- Table polish for CategoryTotals ------------------------------------ */
+table{ border-spacing:0; width:100% }
+th,td{ padding:10px; border-bottom:1px solid var(--border) }
+thead th{ text-align:left; color:var(--muted); font-weight:600 }
+tbody tr:hover{ background: color-mix(in oklab, var(--surface) 85%, var(--text) 6%) }
+
+/* --- Chart container ----------------------------------------------------- */
+.chart{ height: 320px }

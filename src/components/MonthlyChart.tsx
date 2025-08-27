@@ -41,7 +41,7 @@ export default function MonthlyChart() {
         <h2 style={{ margin: 0 }}>Monthly Spending</h2>
         <input type="month" value={month} onChange={(e) => setMonth(e.target.value)} />
       </div>
-      <div style={{ height: 300 }}>
+      <div className="chart">
         <Bar
           data={{
             labels,

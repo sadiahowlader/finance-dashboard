@@ -42,7 +42,7 @@ export default function TransactionList() {
         {filtered.map((t) => (
           <li key={t.id}
               style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12,
-                       display: "flex", justifyContent: "space-between", alignItems: "center", background: "#fff" }}>
+                       display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <div>
               <div style={{ fontWeight: 600 }}>
                 {t.category} — {fmt(t.amount)} {t.type === "expense" ? "🔻" : "🔺"}
